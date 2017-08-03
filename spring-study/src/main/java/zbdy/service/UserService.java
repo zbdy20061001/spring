@@ -10,9 +10,17 @@ import zbdy.domain.User;
 @Service
 public class UserService {
 	
+	//Autowired can be used directly in private property without set method
+	//e.g. @Autowired private UserDao userDao;
+	
 	private UserDao userDao;
 	
-	@Autowired
+	
+	//the method is not necessary to be setXXX(), can be aaa()
+	//Autowired can be used in any injected method
+	//e.g. @Autowired public aaa(UserDao userDao)
+	
+	@Autowired 
 	public void setUserDao(UserDao userDao) {
 		this.userDao = userDao;
 	}
