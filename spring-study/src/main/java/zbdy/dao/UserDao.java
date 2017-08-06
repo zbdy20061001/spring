@@ -1,8 +1,11 @@
 package zbdy.dao;
 
-import zbdy.domain.User;
+import java.sql.SQLException;
+
+import zbdy.model.User;
 
 public interface UserDao {
 	
-	public void addUser(User user);
+	public void insertUser(User user) throws SQLException;
+	
 }

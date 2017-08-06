@@ -1,5 +1,7 @@
 package zbdy;
 
+import java.sql.SQLException;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
@@ -7,8 +9,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
-import zbdy.dao.impl.DataSource;
-import zbdy.domain.User;
+import zbdy.model.User;
 import zbdy.service.UserService;
 
 /**
@@ -25,7 +26,7 @@ public class App
 //		return new DataSource();
 //	}
 	
-    public static void main( String[] args )
+    public static void main( String[] args ) throws SQLException
     {
     	@SuppressWarnings("resource")
 		ApplicationContext context = new AnnotationConfigApplicationContext(App.class);

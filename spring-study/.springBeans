@@ -8,9 +8,9 @@
 	<enableImports><![CDATA[false]]></enableImports>
 	<configs>
 		<config>java:zbdy.App</config>
-		<config>java:zbdy.dao.impl.DataSource</config>
 	</configs>
 	<autoconfigs>
+		<config>java:zbdy.aop.Interceptor</config>
 	</autoconfigs>
 	<configSets>
 	</configSets>

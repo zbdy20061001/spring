@@ -13,21 +13,40 @@
 			<version>4.12</version><!--$NO-MVN-MAN-VER$ -->
 			<scope>test</scope>
 		</dependency>
+		<!-- default spring jar: spring-context, which will include spring-aop, beans, core, expression-->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
 			<version>4.3.9.RELEASE</version>
 			<!-- <scope>runtime</scope> -->
 		</dependency>
+		<!-- spring transaction required jar -->
 		<dependency>
-			<groupId>org.aspectj</groupId>
-			<artifactId>aspectjrt</artifactId>
-			<version>1.8.10</version>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-tx</artifactId>
+			<version>4.3.9.RELEASE</version>
 		</dependency>
-				<dependency>
+		<dependency>
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjweaver</artifactId>
 			<version>1.8.10</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-dbcp2</artifactId>
+			<version>2.1.1</version>
+		</dependency>
+		<!-- derby jdbc drive for embedded mode -->
+		<dependency>
+			<groupId>org.apache.derby</groupId>
+			<artifactId>derby</artifactId>
+			<version>10.13.1.1</version>
+		</dependency>
+		<!-- derby jdbc drive for client mode -->
+		<dependency>
+			<groupId>org.apache.derby</groupId>
+			<artifactId>derbyclient</artifactId>
+			<version>10.13.1.1</version>
 		</dependency>
 	</dependencies>
 </project>

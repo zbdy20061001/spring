@@ -1,4 +1,4 @@
-package zbdy.domain;
+package zbdy.model;
 
 
 public class User {
