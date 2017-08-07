@@ -31,12 +31,7 @@ public class TestUserService {
     {
 		ApplicationContext context = new AnnotationConfigApplicationContext(TestUserService.class);
 		UserService userService = context.getBean(UserService.class);
-		try {
-			userService.createUser(new User("4567", "abcd"));
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			System.out.println(e);
-		}
+			userService.createUser(new User("1113", "abcd"));
     }
 
 }

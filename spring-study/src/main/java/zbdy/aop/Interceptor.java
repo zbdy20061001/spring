@@ -13,7 +13,7 @@ import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 @Aspect
-@Component // @Component needs to be included as a Spring Bean
+//@Component // @Component needs to be included as a Spring Bean
 public class Interceptor {
 
 	//@Before("execution(* zbdy.dao.impl.*.insert*(..))")
@@ -29,8 +29,8 @@ public class Interceptor {
 	
 	// When combining pointcut sub-expressions, the keywords 'and', 'or' and
 	// 'not' can be used in place of '&&', '||' and '!' respectively.
-	// @AfterThrowing(value="execution(* zbdy.dao.impl.*.insert*(..)) or execution(* zbdy.service.*.create*(..))", throwing="ex")
-	@AfterThrowing(value = "execution(* zbdy.service.*.create*(..))", throwing = "ex")
+	// @AfterThrowing(value="execution(* zbdy.dao.impl.*.insert*(..)) or execution(* zbdy.service.impl.*.create*(..))", throwing="ex")
+	@AfterThrowing(value = "execution(* zbdy.service.impl.*.create*(..))", throwing = "ex")
 	public void afterThrowing(Throwable ex) {
 		System.out.println("-------AOP @AfterThrowing ---------");
 		//System.out.println(ex);
@@ -50,6 +50,6 @@ public class Interceptor {
 		System.out.println("-------AOP @Around ends--------------");
 	}
 	
-	@Pointcut("execution(* zbdy.service.*.create*(..))")
+	@Pointcut("execution(* zbdy.service.impl*.create*(..))")
 	private void anyServiceOperation() {}
 }
