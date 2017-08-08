@@ -1,14 +1,11 @@
 package zbdy.service.impl;
 
-import java.sql.SQLException;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Required;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import zbdy.dao.UserDao;
-import zbdy.dao.impl.UserDaoImpl;
 import zbdy.model.User;
 import zbdy.service.UserService;
 
@@ -33,10 +30,11 @@ public class UserServiceImpl implements UserService{
 	}
 	
 	@Transactional
+	//when using JDBC to get connection, @Transactional will not effect
 	public void createUser(User user) {
 		System.out.println("-----------Implemented by UserServcie createUser()-------------");
 			
 			this.userDao.insertUser(user);
-			//throw new RuntimeException("事务回滚测试");
+			//throw new RuntimeException("事务回滚测试"); 
 	}
 }

@@ -2,18 +2,13 @@ package zbdy.aop;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.annotation.After;
-import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.AfterThrowing;
-import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
-import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 @Aspect
-//@Component // @Component needs to be included as a Spring Bean
+@Component // @Component needs to be included as a Spring Bean
 public class Interceptor {
 
 	//@Before("execution(* zbdy.dao.impl.*.insert*(..))")
@@ -33,7 +28,7 @@ public class Interceptor {
 	@AfterThrowing(value = "execution(* zbdy.service.impl.*.create*(..))", throwing = "ex")
 	public void afterThrowing(Throwable ex) {
 		System.out.println("-------AOP @AfterThrowing ---------");
-		//System.out.println(ex);
+		System.out.println(ex);
 	}
 
 	//@After("execution(* zbdy.dao.impl.*.insert*(..))")
