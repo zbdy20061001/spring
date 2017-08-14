@@ -6,8 +6,9 @@
 	<h2>
 		<a href="user/get/zbdy">@RequestMapping("get/{username}") </a>
 	</h2>
-	<form method="post" action="user/form">
-		<input type="text" name="username" id="username" size="15" /> <input
+	<form id="user"  method="post" action="user/form">
+		<input type="text" name="username" id="username" size="15" /><br>
+		<input type="password" name="password" id="password" size="15" /> <input
 			type="submit">
 	</form>
 
