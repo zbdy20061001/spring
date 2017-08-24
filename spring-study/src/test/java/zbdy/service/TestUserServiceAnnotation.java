@@ -33,7 +33,7 @@ public class TestUserServiceAnnotation {
 		@SuppressWarnings("resource")
 		ApplicationContext context = new AnnotationConfigApplicationContext(TestUserServiceAnnotation.class);
 		UserService userService = context.getBean(UserService.class);
-		userService.createUser(new User("6767", "abcd"));
+		userService.createUser(new User("9999", "abcd"));
     }
 
 }
