@@ -1,0 +1,1 @@
+This is a pure non xml restful project
