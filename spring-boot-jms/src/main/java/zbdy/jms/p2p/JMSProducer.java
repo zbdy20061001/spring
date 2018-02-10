@@ -1,4 +1,4 @@
-package zbdy.activemq;
+package zbdy.jms.p2p;
 
 
 import javax.jms.Connection;

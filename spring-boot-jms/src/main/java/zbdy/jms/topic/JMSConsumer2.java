@@ -1,4 +1,4 @@
-package zbdy.activemq;
+package zbdy.jms.topic;
 
 import javax.jms.Connection;
 import javax.jms.ConnectionFactory;
@@ -6,7 +6,6 @@ import javax.jms.Destination;
 import javax.jms.JMSException;
 import javax.jms.MessageConsumer;
 import javax.jms.Session;
-import javax.jms.TextMessage;
 
 import org.apache.activemq.ActiveMQConnection;
 import org.apache.activemq.ActiveMQConnectionFactory;
@@ -15,7 +14,7 @@ import org.apache.activemq.ActiveMQConnectionFactory;
  * @author liang
  *
  */
-public class JMSConsumer {
+public class JMSConsumer2 {
 
     private static final String USERNAME = ActiveMQConnection.DEFAULT_USER;//默认连接用户名
     private static final String PASSWORD = ActiveMQConnection.DEFAULT_PASSWORD;//默认连接密码
@@ -31,7 +30,7 @@ public class JMSConsumer {
         MessageConsumer messageConsumer;//消息的消费者
 
         //实例化连接工厂
-        connectionFactory = new ActiveMQConnectionFactory(JMSConsumer.USERNAME, JMSConsumer.PASSWORD, JMSConsumer.BROKEURL);
+        connectionFactory = new ActiveMQConnectionFactory(JMSConsumer2.USERNAME, JMSConsumer2.PASSWORD, JMSConsumer2.BROKEURL);
 
         try {
             //通过连接工厂获取连接
@@ -41,19 +40,10 @@ public class JMSConsumer {
             //创建session
             session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
             //创建一个连接HelloWorld的消息队列
-            destination = session.createQueue("HelloWorld");
+            destination = session.createTopic("HelloWorld");
             //创建消息消费者
             messageConsumer = session.createConsumer(destination);
-
-            while (true) {
-                TextMessage textMessage = (TextMessage) messageConsumer.receive(100000);
-                if(textMessage != null){
-                    System.out.println("收到的消息:" + textMessage.getText());
-                }else {
-                	System.out.println("break here");
-                    break;
-                }
-            }
+            messageConsumer.setMessageListener(new Listener1());
 
         } catch (JMSException e) {
             e.printStackTrace();

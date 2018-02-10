@@ -1,10 +1,15 @@
 package zbdy.model;
 
+import java.io.Serializable;
+
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
-public class User {
+public class User implements Serializable{
+
+	private static final long serialVersionUID = 3346542463276095666L;
+	
 	private String username;
 	private String password;
 	
