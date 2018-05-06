@@ -1,0 +1,1 @@
+select * from APP.USER_INFO;
