@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:int="http://www.springframework.org/schema/integration"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/integration http://www.springframework.org/schema/integration/spring-integration.xsd">
+		
+	<int:channel id="helloWorldWithReplyChannel"></int:channel>
+	<int:service-activator input-channel="helloWorldWithReplyChannel"
+		ref="helloServiceImpl" method="getHelloMessage">
+	</int:service-activator>
+	
+	<!-- Define a gateway that we can use to capture a return value -->
+	<int:gateway id="helloWorldGateway"
+		service-interface="zbdy.service.HelloService"
+		default-request-channel="helloWorldWithReplyChannel">
+	</int:gateway>
+</beans>

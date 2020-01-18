@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:int="http://www.springframework.org/schema/integration"
+	xmlns:int-jms="http://www.springframework.org/schema/integration/jms"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/integration http://www.springframework.org/schema/integration/spring-integration.xsd
+		http://www.springframework.org/schema/integration/jms http://www.springframework.org/schema/integration/jms/spring-integration-jms.xsd ">
+
+	<bean id="amqConnectionFactory"
+		class="org.apache.activemq.ActiveMQConnectionFactory">
+		<property name="brokerURL" value="tcp://localhost:61616" />
+		<property name="userName" value="admin" />
+		<property name="password" value="admin" />
+	</bean>
+
+	<bean id="connectionFactory"
+		class="org.springframework.jms.connection.CachingConnectionFactory">
+		<property name="targetConnectionFactory"
+			ref="amqConnectionFactory" />
+		<property name="sessionCacheSize" value="100" />
+	</bean>
+
+	<!-- Define a channel to communicate out to a JMS Destination -->
+	<int:channel id="topicChannel" />
+
+	<!-- Define an adaptor that route topicChannel messages to the myTopic topic; 
+		the outbound-channel-adapter automatically finds the configured connectionFactory 
+		bean (by naming convention) -->
+	<int-jms:outbound-channel-adapter
+		channel="topicChannel" destination-name="test.topic"
+		pub-sub-domain="true" />
+
+	<int-jms:message-driven-channel-adapter
+		id="messageDrivenAdapter" channel="listenerChannel"
+		destination-name="test.topic" pub-sub-domain="true" />
+		
+		<!-- Create a channel for a listener that will consume messages -->
+	<int:channel id="listenerChannel" />
+
+	<int:service-activator
+		input-channel="listenerChannel" ref="messageListenerImpl"
+		method="processMessage" />
+
+	
+	
+</beans>

@@ -9,13 +9,13 @@ import zbdy.model.User;
 @RestController
 @RequestMapping("/")
 public class UserRestController {
-	
+
 	private User user = new User("zbdy", "1111");
-	
+
 	@GetMapping("user")
-    public User getUser() {
+	public User getUser() {
 		System.out.println("------------restful----------");
-        return this.user;
-    }
-	
+		return this.user;
+	}
+
 }
