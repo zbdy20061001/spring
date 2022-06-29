@@ -65,7 +65,7 @@
 		<dependency>
 			<groupId>org.apache.derby</groupId>
 			<artifactId>derby</artifactId>
-			<version>10.13.1.1</version>
+			<version>10.14.2.0</version>
 		</dependency>
 		<!-- derby jdbc drive for client mode -->
 		<dependency>
