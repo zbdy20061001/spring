@@ -1,0 +1,38 @@
+spring:
+  application:
+    name: "archetype"
+server:
+  port: 80
+#debug: true
+logging:
+  file:
+    path: "logs"
+#eureka:
+#  client:
+#    service-url:
+#      defaultZone: http://localhost:8761/eureka
+#  instance:
+#    prefer-ip-address: true   
+##acuator
+management:
+  endpoints:
+    web:
+      exposure:
+#        include: "env,beans"
+        include: "*"
+---
+spring:
+  config:
+    activate:
+      on-profile: "dev"
+server:
+  port: 8080
+  
+---
+spring:
+  config:
+    activate:
+      on-profile: "prod"
+server:
+  port: 4431
+  
