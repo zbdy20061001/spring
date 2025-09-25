@@ -1,9 +1,7 @@
 package zbdy.model;
 
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement
+//@XmlRootElement
 public class User {
 	private String username;
 	private String password;
@@ -17,7 +15,7 @@ public class User {
 		this.password = password;
 	}
 
-	@XmlElement
+//	@XmlElement
 	public String getUsername() {
 		return username;
 	}
@@ -26,7 +24,7 @@ public class User {
 		this.username = username;
 	}
 
-	@XmlElement
+//	@XmlElement
 	public String getPassword() {
 		return password;
 	}
