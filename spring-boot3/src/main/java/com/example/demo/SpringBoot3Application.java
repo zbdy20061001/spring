@@ -45,8 +45,8 @@ public class SpringBoot3Application {
     private static Map<String, User> userRepo = new HashMap<>();
 
     static {
-        User user1 = new User("zbdy", "1111");
-        User user2 = new User("abcd", "1234");
+        User user1 = new User(1,"zbdy", "1111");
+        User user2 = new User(2,"abcd", "1234");
         userRepo.put(user1.getUsername(), user1);
         userRepo.put(user2.getUsername(), user2);
     }

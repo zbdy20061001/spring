@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: "spring-boot3"
+  datasource:
+    generate-unique-name: false
+    name: "test"
+  jpa:
+    show-sql: true
