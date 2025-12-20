@@ -6,3 +6,5 @@ spring:
     name: "test"
   jpa:
     show-sql: true
+    hibernate:
+      ddl-auto: update
